@@ -1,152 +1,220 @@
-
+/*
+Realizar el algoritmo que permita ingresar los datos de los alumnos de una division de la UTN FRA, 
+los datos solicitados son:
+nombre
+Tipo curasada("libre";"presencial";"remota")
+cantidad de materias( mas de cero y menos de 8)
+Sexo ( femenino , masculino , no binario)
+Nota promedio (entre 0 y 10)
+edad (validar)
+se debe informar de existir, o informar que no existe , en el caso que corresponda.
+a) El nombre del mejor promedio que no sea masculino
+b) El nombre del mas joven de los alumnos entre los que la dan libre
+d) El promedio de nota por sexo
+f) La edad y nombre del que cursa mas materias que no sean en forma remota
+*/
  function mostrar()
 {
-	var continuar
-	var nombre
-	var tipoCursada;
-	var cantidadMaterias;
-	var sexo;
-	var notaPromedio;
-	var edad;
-	//A
-	var 
-	;
-	var flag=true;
-	//B
-	var flagAlumnoMasJovenLibre=true;
-	var alumnoMasJovenLibre;
-	var edadAlumnoMasJovenLibre;
-	//D
-	var contadorNotaMasculino=0;
-	var contadorNotafemenino=0;
-	var contadorNotaNoVinario=0;
-	var acumuladorNotaMasculino=0;
-	var acumuladorNotaFemenino=0;
-	var acumuladorNotaNoVinario=0;
-	var promedioNotaMasculino;
-	var promedioNotaFemenino;
-	var promedioNotaNovinario;
-	//F
-	var flagAlumnoQueCursaMasMaterias=true;
-	var mayorMateriasDeFormaRemota;
-	var edadAlumnoMayorMateriasDeFormaRemota;
-	var nombreAlumnoMayorMateriasDeFormaRemota;
-
+//////Subir////////////Subir////////////Subir////////////Subir////////////Subir//////
+		var nombre;
+		var tipoCursada;
+		var cantidadMaterias;
+		var sexo;
+		var nota;
+		var edad;
+		var continuar;
+		//A
+		var flagMejorPromedioNoMasculino=true;
+		var mejorPromedioNoMasculino;
+		var nombreMejorPromedioNoMAsculino;
+		//B 
+		var flagAlumnoMasJovenLibre=true;
+		var edadAlumnoMasJovenLibre;
+		var nombreAlumnoMasJovenLibre;
+		//D
+		var contadorFemenino=0;
+		var contadorMasculino=0;
+		var contadorNoBinario=0;
+		var acumuladorFemenino=0;
+		var acumuladorMasculino=0;
+		var acumuladorNoBinario=0;
+		var notaPromedioFemenino;
+		var notaPromedioMasculino;
+		var notaPromedioNoBinario;
+		//F
+		var flagMasMateriasFormaNoRemota=true;
+		var masMateriasFormaNoremota;
+		var edadMasMateriasFormaNoRemota;
+		var nombreMasMateriasFormaNoRemota;
+		//////Subir////////////Subir////////////Subir////////////Subir////////////Subir//////
 	do
 	{
-		nombre=prompt("ingrese el nombre");
-		while (nombre!=" ")
+		nombre=prompt("Ingrese nombre. ");
+		while (isNaN(nombre)==false)
 		{
-			nombre=prompt("Nombre ingresado no valido. Ingrese el nombre");
+			nombre=prompt("EROR!!!. Ingrese nombre. ");
 		}
+		console.log(nombre);
 
-		tipoCursada=prompt("Cursa: (libre-presencial-remota)");
+		tipoCursada=prompt("Ingrese tipo cursada(libre;presencial;remota)");
 		while (tipoCursada!="libre"&&tipoCursada!="presencial"&&tipoCursada!="remota")
 		{
-			tipoCursada=prompt("El tipo de cursada que ingreso no es valida. Cursa: (libre-presencial-remota)");
+			tipoCursada=prompt("ERROR!!!. Ingrese tipo cursada(libre;presencial;remota)");
 		}
+		console.log(tipoCursada);
 
-		cantidadMaterias=prompt("Cuantas materias cursa? (entre 0 y 8)");
-		cantidadMaterias=parseInt(cantidadMaterias);
-		while (cantidad)
+		cantidadMaterias=parseInt(prompt("Ingrese cantidad de materias (mas de cero y menos de 8)"));
+		while (isNaN(cantidadMaterias)||cantidadMaterias<0||cantidadMaterias>8)
 		{
-			cantidadMaterias=prompt("La cantidad de materias que puso no es valida. Cuantas materias cursa? (entre 0 y 8)");
-			cantidadMaterias=parseInt(cantidadMaterias);
+			cantidadMaterias=parseInt(prompt("ERROR!!!. Ingrese cantidad de materias (mas de cero y menos de 8)"));
 		}
+		console.log(cantidadMaterias);
 
-		sexo=prompt("Ingrese el sexo: (femenino,masculino,no vinario");
-		while (sexo!="femenino"&&sexo!="masculino"&&sexo!="no vinario")
+		sexo=prompt("Ingrese el sexo (femenino , masculino , no binario)");
+		while (sexo!="femenino"&&sexo!="masculino"&&sexo!="no binario")
 		{
-			sexo=prompt("El sexo ingresado no es valido. Ingrese el sexo: (femenino,masculino,no vinario");
+			sexo=prompt("ERROR!!!. Ingrese el sexo (femenino , masculino , no binario)");
 		}
+		console.log(sexo);
 
-		notaPromedio=prompt("ingrese la nota promedio (entre 0 y 10)");
-		notaPromedio=parseInt(notaPromedio);
-		while (notaPromedio<0||notaPromedio>10)
+		nota=parseInt(prompt("Ingrese la nota promedio. (entre 0 y 10)"));
+		while (isNaN(nota)==true||nota<0||nota>10)
 		{
-			notaPromedio=prompt("La nota promedio ingresada no es valida. Ingrese la nota promedio (entre 0 y 10)");
-			notaPromedio=parseInt(notaPromedio);
+			nota=parseInt(prompt("ERROR!!!. Ingrese la nota promedio. (entre 0 y 10)"));
 		}
+		console.log(nota);
 
-		edad=prompt("Ingrese la edad");
-		edad=parseInt(edad);
-		while (inNaN(edad));
+		edad=parseInt(prompt("Ingrese la edad"));
+		while (isNaN(edad)==true||edad<18||edad>100)
 		{
-			edad=prompt("La edad que ingreso no es valida. Ingrese la edad");
-			edad=parseInt(edad);
+			edad=parseInt(prompt("ERROR!!!. Ingrese la edad"));
 		}
-		//A
+		console.log(edad);
+		//Fin pedir datos;
+		//A;El nombre del mejor promedio que no sea masculino
 		if (sexo!="masculino")
 		{
-			if (flag==true)
+			if (flagMejorPromedioNoMasculino==true)
 			{
-				mejorNota=notaPromedio;
-				flag=false;
+				mejorPromedioNoMasculino=nota;
+				nombreMejorPromedioNoMAsculino=nombre;
+				flagMejorPromedioNoMasculino=false
 			}
-			else if (mejorNota<notaPromedio)
+			else if (mejorPromedioNoMasculino<nota)
 			{
-				mejorNota=notaPromedio;
+				mejorPromedioNoMasculino=nota;
+				nombreMejorPromedioNoMAsculino=nombre;
 			}
 		}
-		//B
+
+
+		//B;El nombre del mas joven de los alumnos entre los que la dan libre
 		if (tipoCursada=="libre")
 		{
 			if (flagAlumnoMasJovenLibre==true)
 			{
 				edadAlumnoMasJovenLibre=edad;
-				alumnoMasJovenLibre=nombre;
+				nombreAlumnoMasJovenLibre=nombre;
 				flagAlumnoMasJovenLibre=false;
 			}
-			else if (edadAlumnoMasJovenLibre>edad)
+			else if(edadAlumnoMasJovenLibre>edad)
 			{
 				edadAlumnoMasJovenLibre=edad;
-				alumnoMasJovenLibre=nombre;
+				nombreAlumnoMasJovenLibre=nombre;
 			}
 		}
-		//D
-		if (sexo=="masculino")
+
+		//D;El promedio de nota por sexo
+		switch (sexo)
 		{
-			contadorNotaMasculino++;
-			acumuladorNotaMasculino=acumuladorNotaMasculino+nota;
+			case "femenino":
+				contadorFemenino++;
+				acumuladorFemenino=acumuladorFemenino+nota;
+				break;
+			case "masculino":
+				contadorMasculino++;
+				acumuladorMasculino=acumuladorMasculino+nota;
+				break;
+			case"no binario":
+				contadorNoBinario++;
+				acumuladorNoBinario=acumuladorNoBinario+nota;
+				break;
 		}
-		else if(sexo=="femenino")
-		{
-			contadorNotaFemenino++;
-			acumuladorNotaFemenino=acumuladorNotaFemenino+nota;
-		}
-		else if(sexo=="no vinario")
-		{
-			contadorNotaNoVinario++;
-			acumuladorNotaNoVinario=acumuladorNotaNoVinario+nota;
-		}
-		//F
+		
+		//F;La edad y nombre del que cursa mas materias que no sean en forma remota;
 		if (tipoCursada!="remota")
 		{
-			if (flagAlumnoQueCursaMasMaterias==true)
+			if (flagMasMateriasFormaNoRemota==true)
 			{
-				mayorMateriasDeFormaRemota=cantidadMaterias;
-				edadAlumnoMayorMateriasDeFormaRemota=edad;
-				nombreAlumnoMayorMateriasDeFormaRemota=nombre;
-				flagAlumnoQueCursaMasMaterias=false
+				masMateriasFormaNoremota=cantidadMaterias;
+				edadMasMateriasFormaNoRemota=edad;
+				nombreMasMateriasFormaNoRemota=nombre;
 			}
-			else if (mayorMateriasDeFormaRemota<cantidadMaterias)
+			else if (masMateriasFormaNoremota<cantidadMaterias)
 			{
-				mayorMateriasDeFormaRemota=cantidadMaterias;
-				edadAlumnoMayorMateriasDeFormaRemota=edad;
-				nombreAlumnoMayorMateriasDeFormaRemota=nombre;
+				masMateriasFormaNoremota=cantidadMaterias;
+				edadMasMateriasFormaNoRemota=edad;
+				nombreMasMateriasFormaNoRemota=nombre;
 			}
 		}
-		continuar=confirm("Desea continuar?")
-	}while(continuar)
-	//A 
-	document.write("El mejor promedio no masculino es: "+ mejorNota);
-	//B
-	document.write("El nombre del alumno mas joven que da libre es: "+ alumnoMasJovenLibre);
-	//D
-	promedioNotaMasculino=contadorNotaMasculino/acumuladorNotaFemenino;
-	promedioNotaFemenino=contadorNotafemenino/acumuladorNotaFemenino;
-	promedioNotaNovinario=contadorNotaNoVinario/acumuladorNotaNoVinario;
-	document.write("El promedio de nota masculino es: "+promedioNotaMasculino+" El promedio nota femenino es: "+promedioNotaFemenino+" El promedio nota de sexo no vinario es: "+promedioNotaNovinario);
-	//F
-	document.write("El alumno que cursa mas materias de forma no remota tiende de nombre: "+nombreAlumnoMayorMateriasDeFormaRemota+" y tiene "+edadAlumnoMayorMateriasDeFormaRemota+" años de edad");
+		continuar=confirm("Desea ingresar nuevamente datos?")
+	}while (continuar==true)
+	//A;El nombre del mejor promedio que no sea masculino
+	if (flagMejorPromedioNoMasculino==false)
+	{
+		document.write("El nombre del mejor promedio que no es masculino es: "+nombreMejorPromedioNoMAsculino);
+	}
+	else
+	{
+		document.write("<br>No se ingresaron notas de los sexos distintos a masculinos");
+	}
+	//B;El nombre del mas joven de los alumnos entre los que la dan libre
+	if (flagAlumnoMasJovenLibre==false)
+	{
+		document.write("<br>El nombre del alumno mas joven que cursa de manera libre es: "+nombreAlumnoMasJovenLibre);		
+	}
+	else
+	{
+		document.write("<br>No se ingresaron alumnos alumnos que cursen en formato libre");
+	}
+
+	//D;El promedio de nota por sexo
+	notaPromedioFemenino=acumuladorFemenino/contadorFemenino;
+	notaPromedioMasculino=acumuladorMasculino/contadorMasculino;
+	notaPromedioNoBinario=acumuladorNoBinario/contadorNoBinario;
+	if (contadorFemenino!=0)
+	{
+		document.write("<br>El promedio de nota por sexo es: <br>Para femenino "+notaPromedioFemenino);
+	}
+	else 
+	{
+		document.write("<br>No se ingresaron notas en sexo femenino");
+	}
+
+	if (contadorMasculino!=0)
+	{
+		document.write("<br>Para masculino "+notaPromedioMasculino);	}
+	else 
+	{
+		document.write("<br>No se ingresaron notas en sexo masculino");
+	}
+
+	if (contadorNoBinario!=0)
+	{
+		document.write("<br>Para no binario "+notaPromedioNoBinario);
+	}
+	else 
+	{
+		document.write("<br>No se ingresaron notas en sexo no binario");
+	}
+
+	//F;La edad y nombre del que cursa mas materias que no sean en forma remota
+	if (flagMasMateriasFormaNoRemota==false)
+	{
+		document.write("<br>La edad del que cursa mas materias de forma no remota es "+edadMasMateriasFormaNoRemota+" y el nombre es"+nombreMasMateriasFormaNoRemota);
+	}
+
+	
+
 }
+

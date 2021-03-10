@@ -20,14 +20,18 @@ function mostrar()
 	var cantidadUnidadesProducto;
 	var tipoInflamable;
 	var marcaProducto;
+	//A
+	var acumuladorCantidad=0;
+	var contadorIAC=0
+	var contadorAlcohol=0;
+	var contadorQuat=0;
 
 	//B
 	var maximoUnidadesInflamable;
 	var productoMaximoUnidadesInflamable;
 
 	//C
-	var contadorIAC=0;
-
+	var contadorIacPrecioMenor200;
 	//D
 	var maximoPresioProducto;
 	var marcaMaximoPresioProducto;
@@ -66,6 +70,27 @@ function mostrar()
 		}
 		//FIN PEDIR INFORMACION 
 
+		//A
+		acumuladorCantidad=acumuladorCantidad+cantidadUnidadesProducto;
+		switch (tipoProducto)
+		{
+			case "alcohol":
+				contadorAlcohol++;
+				break;
+			case "iac":
+				contadorIAC++;
+				//C
+				if (precioProducto<=200)
+				{
+					contadorIacPrecioMenor200++;
+				}
+
+				break;
+			case "quat":
+				contadorQuat++;
+				break;
+		}
+
 		//B
 		if (i==0)
 		{
@@ -76,12 +101,6 @@ function mostrar()
 		{
 			maximoUnidadesInflamable=cantidadUnidadesProducto;
 			productoMaximoUnidadesInflamable=tipoProducto;
-		}
-
-		//C
-		if (tipoProducto=="iac"&&precioProducto<=200)
-		{
-			contadorIAC++;
 		}
 
 		//D
@@ -103,15 +122,15 @@ function mostrar()
 		alert("Cantidad unidades producto: "+cantidadUnidadesProducto);
 		alert("Tipo inflamable : "+tipoInflamable);
 		alert("Marca producto : "+marcaProducto);*/
-	}
+	} //fin del for
 	//Respestas
 	//A
 	//B
 	document.write("El tipo de inflamable con mas cantidad de unidades en la compra es: "+productoMaximoUnidadesInflamable);
 	//C
-	document.write("El total de compras de 'IAC' con precio menor a 200 es de : "+contadorIAC);
+	document.write("El total de compras de 'IAC' con precio menor a 200 es de : "+contadorIacPrecioMenor200);
 	//D
-	document.write("El producto mas caro es "+ +" y la marca es "+);
+	document.write("El producto mas caro es "+producMaximoPresioProducto+" y la marca es "+marcaMaximoPresioProducto);
 }
 	/*
 	//alcohol-iac-quat
